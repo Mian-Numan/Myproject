@@ -1,0 +1,475 @@
+# Advanced Projects Portfolio Website (HTML + Tailwind CSS + JavaScript)
+
+Save this file as `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Portfolio</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body{
+      background: #020617;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar{
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background: #38bdf8;
+      border-radius: 20px;
+    }
+
+    /* Hero Overlay */
+    .hero-overlay{
+      background: rgba(0,0,0,0.65);
+    }
+
+    /* Glass Effect */
+    .glass{
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Project Hover */
+    .project-card:hover img{
+      transform: scale(1.08);
+    }
+
+    .project-card img{
+      transition: 0.5s;
+    }
+
+    /* Animation */
+    .fade-up{
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+
+    .fade-up.active{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  </style>
+</head>
+<body class="text-white">
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="fixed top-0 left-0 w-full z-50 glass">
+
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <h1 class="text-3xl font-bold text-cyan-400">
+      Mian Numan
+    </h1>
+
+    <ul class="hidden md:flex items-center gap-8 text-lg">
+
+      <li>
+        <a href="#home" class="hover:text-cyan-400 duration-300">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a href="#projects" class="hover:text-cyan-400 duration-300">
+          Projects
+        </a>
+      </li>
+
+      <li>
+        <a href="#contact" class="hover:text-cyan-400 duration-300">
+          Contact
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- Mobile Button -->
+
+    <button id="menuBtn" class="md:hidden text-2xl">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+  </div>
+
+  <!-- Mobile Menu -->
+
+  <div id="mobileMenu" class="hidden md:hidden glass px-6 py-4">
+
+    <ul class="space-y-4 text-lg">
+
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+  </div>
+
+</nav>
+
+<!-- ================= HERO SECTION ================= -->
+
+<section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+
+  <!-- Background Video -->
+
+  <video autoplay muted loop class="absolute top-0 left-0 w-full h-full object-cover">
+    <source src="/assets/video/videoplayback.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlay -->
+
+  <div class="absolute inset-0 hero-overlay"></div>
+
+  <!-- Content -->
+
+  <div class="relative z-10 px-6 fade-up">
+
+    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+      Creative Developer <br>
+      <span class="text-cyan-400">Portfolio Website</span>
+    </h1>
+
+    <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+      I build modern, responsive and professional websites using HTML, CSS, JavaScript, Bootstrap and Tailwind CSS.
+    </p>
+
+    <a href="#projects" class="bg-cyan-400 hover:bg-cyan-500 px-8 py-4 rounded-full text-lg font-semibold duration-300 shadow-lg shadow-cyan-500/40">
+      Explore Projects
+    </a>
+
+  </div>
+
+</section>
+
+<!-- ================= PROJECT SECTION ================= -->
+
+<section id="projects" class="py-24 px-6">
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Heading -->
+
+    <div class="text-center mb-16 fade-up">
+
+      <h2 class="text-5xl font-bold text-cyan-400 mb-4">
+        My Projects
+      </h2>
+
+      <p class="text-gray-400 text-lg">
+        Modern responsive projects with attractive UI and advanced functionality.
+      </p>
+
+    </div>
+
+    <!-- Grid -->
+
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-10">
+
+      <!-- Card 1 -->
+
+      <div class="project-card glass rounded-3xl overflow-hidden shadow-xl fade-up">
+
+        <div class="overflow-hidden cursor-pointer">
+          <img src="https://picsum.photos/600/400?1" alt="project" class="w-full h-64 object-cover" onclick="openImage(this.src)">
+        </div>
+
+        <div class="p-6">
+
+          <a href="https://example.com" target="_blank" class="text-2xl font-semibold text-cyan-400 hover:text-white duration-300">
+            E-Commerce Website
+          </a>
+
+          <p class="text-gray-300 mt-4 leading-7">
+            Responsive shopping website with payment system and modern user interface.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Card 2 -->
+
+      <div class="project-card glass rounded-3xl overflow-hidden shadow-xl fade-up">
+
+        <div class="overflow-hidden cursor-pointer">
+          <img src="/assets/potfoliyo website.png" alt="project" class="w-full h-64 object-cover" onclick="openImage(this.src)">
+        </div>
+
+        <div class="p-6">
+
+          <a href="https://mian-numan.github.io/cv-try/" target="_blank" class="text-2xl font-semibold text-cyan-400 hover:text-white duration-300">
+            Portfolio Website
+          </a>
+
+          <p class="text-gray-300 mt-4 leading-7">
+            Professional portfolio with animations, responsive design and smooth effects.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Card 3 -->
+
+      <div class="project-card glass rounded-3xl overflow-hidden shadow-xl fade-up">
+
+        <div class="overflow-hidden cursor-pointer">
+          <img src="https://picsum.photos/600/400?3" alt="project" class="w-full h-64 object-cover" onclick="openImage(this.src)">
+        </div>
+
+        <div class="p-6">
+
+          <a href="https://example.com" target="_blank" class="text-2xl font-semibold text-cyan-400 hover:text-white duration-300">
+            Dashboard UI
+          </a>
+
+          <p class="text-gray-300 mt-4 leading-7">
+            Advanced admin dashboard with charts, analytics and interactive design.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Card 4 -->
+
+      <div class="project-card glass rounded-3xl overflow-hidden shadow-xl fade-up">
+
+        <div class="overflow-hidden cursor-pointer">
+          <img src="https://picsum.photos/600/400?4" alt="project" class="w-full h-64 object-cover" onclick="openImage(this.src)">
+        </div>
+
+        <div class="p-6">
+
+          <a href="https://example.com" target="_blank" class="text-2xl font-semibold text-cyan-400 hover:text-white duration-300">
+            Travel Website
+          </a>
+
+          <p class="text-gray-300 mt-4 leading-7">
+            Travel agency website with booking functionality and modern gallery.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Card 5 -->
+
+      <div class="project-card glass rounded-3xl overflow-hidden shadow-xl fade-up">
+
+        <div class="overflow-hidden cursor-pointer">
+          <img src="https://picsum.photos/600/400?5" alt="project" class="w-full h-64 object-cover" onclick="openImage(this.src)">
+        </div>
+
+        <div class="p-6">
+
+          <a href="https://example.com" target="_blank" class="text-2xl font-semibold text-cyan-400 hover:text-white duration-300">
+            Restaurant Website
+          </a>
+
+          <p class="text-gray-300 mt-4 leading-7">
+            Food ordering website with attractive menu and responsive layout.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Card 6 -->
+
+      <div class="project-card glass rounded-3xl overflow-hidden shadow-xl fade-up">
+
+        <div class="overflow-hidden cursor-pointer">
+          <img src="https://picsum.photos/600/400?6" alt="project" class="w-full h-64 object-cover" onclick="openImage(this.src)">
+        </div>
+
+        <div class="p-6">
+
+          <a href="https://example.com" target="_blank" class="text-2xl font-semibold text-cyan-400 hover:text-white duration-300">
+            Education Platform
+          </a>
+
+          <p class="text-gray-300 mt-4 leading-7">
+            Online learning platform with courses, video tutorials and dashboard.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= CONTACT SECTION ================= -->
+
+<section id="contact" class="py-24 px-6">
+
+  <div class="max-w-4xl mx-auto glass rounded-[35px] p-8 md:p-14 fade-up">
+
+    <div class="text-center mb-12">
+
+      <h2 class="text-5xl font-bold text-cyan-400 mb-4">
+        Contact Me
+      </h2>
+
+      <p class="text-gray-300 text-lg">
+        Feel free to contact me for your next project.
+      </p>
+
+    </div>
+
+    <form class="grid md:grid-cols-2 gap-6">
+
+      <input type="text" placeholder="First Name" class="bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 outline-none focus:border-cyan-400">
+
+      <input type="text" placeholder="Last Name" class="bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 outline-none focus:border-cyan-400">
+
+      <input type="email" placeholder="Email Address" class="bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 outline-none focus:border-cyan-400">
+
+      <input type="tel" placeholder="Phone Number" class="bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 outline-none focus:border-cyan-400">
+
+      <textarea rows="6" placeholder="Write Your Message" class="md:col-span-2 bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 outline-none focus:border-cyan-400"></textarea>
+
+      <button class="md:col-span-2 bg-cyan-400 hover:bg-cyan-500 duration-300 py-4 rounded-full text-lg font-semibold shadow-lg shadow-cyan-500/30">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="border-t border-slate-800 py-8 text-center px-6">
+
+  <h2 class="text-3xl font-bold text-cyan-400 mb-4">
+    Numan Portfolio
+  </h2>
+
+  <div class="flex justify-center gap-6 text-2xl mb-6">
+
+    <a href="https://www.facebook.com/profile.php?id=100084723192890" class="hover:text-cyan-400 duration-300">
+      <i class="fab fa-facebook"></i>
+    </a>
+
+    <a href="https://wa.me/923194572043" class="hover:text-cyan-400 duration-300">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/in/mian-numan/" class="hover:text-cyan-400 duration-300">
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a href="https://github.com/Mian-Numan" class="hover:text-cyan-400 duration-300">
+      <i class="fab fa-github"></i>
+    </a>
+
+  </div>
+
+  <p class="text-gray-400">
+    © 2026 All Rights Reserved | Developed By Numan
+  </p>
+
+</footer>
+
+<!-- ================= IMAGE MODAL ================= -->
+
+<div id="imageModal" class="fixed inset-0 bg-black/90 hidden justify-center items-center z-[9999] p-6">
+
+  <button onclick="closeImage()" class="absolute top-6 right-8 text-5xl text-white hover:text-cyan-400 duration-300">
+    &times;
+  </button>
+
+  <img id="modalImage" class="max-w-full max-h-[90vh] rounded-3xl shadow-2xl border-4 border-cyan-400">
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+  // Mobile Menu
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Image Popup
+
+  const imageModal = document.getElementById('imageModal');
+  const modalImage = document.getElementById('modalImage');
+
+  function openImage(src){
+    imageModal.classList.remove('hidden');
+    imageModal.classList.add('flex');
+    modalImage.src = src;
+  }
+
+  function closeImage(){
+    imageModal.classList.add('hidden');
+    imageModal.classList.remove('flex');
+  }
+
+  // Scroll Animation
+
+  const fadeElements = document.querySelectorAll('.fade-up');
+
+  const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach((entry)=>{
+
+      if(entry.isIntersecting){
+        entry.target.classList.add('active');
+      }
+
+    });
+
+  },{
+    threshold:0.2
+  });
+
+  fadeElements.forEach((el)=>observer.observe(el));
+
+</script>
+
+</body>
+</html>
+```
